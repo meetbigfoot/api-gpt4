@@ -7,11 +7,11 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-functions.http('turbo', (req, res) => {
+functions.http('gpt4', (req, res) => {
   cors(req, res, async () => {
     try {
       const completion = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-4',
         messages: req.body,
       })
       res.status(200).send(completion.data.choices[0].message.content)
